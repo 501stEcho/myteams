@@ -73,5 +73,6 @@ int mainloop(server_t *server)
             check_client_write(server, &tmp_wt_fd, temp);
             check_client_read(server, &tmp_rd_fd, temp);
         }
+        saveguard_server(server);
     }
 }

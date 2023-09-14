@@ -153,7 +153,6 @@ void list_command(server_t *server, linked_client *client, char **command);
 void subscribed_command(server_t *ser, linked_client *clie, char **command);
 void subscribe_command(server_t *server, linked_client *client, char **command);
 void unsubscribe_command(server_t *serv, linked_client *client, char **command);
-void save_command(server_t *server, linked_client *client, char **command);
 void info_command(server_t *server, linked_client *client, char **command);
 
 // OTHER FUNCTIONS PROTOTYPES
@@ -298,12 +297,12 @@ chat_t *find_discussion_by_users(linked_chat_t *user, user_t *user1,
     user_t *user2);
 
 // SAVE
+void saveguard_server(server_t *server);
 void save_team(FILE *fd, team_t *teams);
 void save_channel(FILE *fd, channel_t *channels);
 void save_thread(FILE *fd, thread_t *threads);
 void save_reply(FILE *fd, reply_t *threads);
 void save_user(FILE *fd, user_t *user);
-void save_conv(FILE *fd, chat_t *conv);
 void save_message(FILE *fd, message_t *conv);
 void save_conv(FILE *fd, chat_t *conv);
 

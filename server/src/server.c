@@ -33,7 +33,6 @@ void init_commands(server_t *server)
     push_command(server->commands, "subscribed", &subscribed_command);
     push_command(server->commands, "subscribe", &subscribe_command);
     push_command(server->commands, "unsubscribe", &unsubscribe_command);
-    push_command(server->commands, "save", &save_command);
     push_command(server->commands, "info", &info_command);
 }
 

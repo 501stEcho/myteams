@@ -61,8 +61,3 @@ void saveguard_server(server_t *server)
     save_teams("./save/teams.log", server->teams);
     save_convs("./save/convs.log", server->chats);
 }
-
-void save_command(server_t *server, linked_client *client, char **command)
-{
-    saveguard_server(server);
-}
