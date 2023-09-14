@@ -82,6 +82,7 @@ int client_start(int ac, char **av)
         free(client);
         exit(84);
     }
+    printf("Connected to server !\n");
     initialize_fd(client->socket_fd, &client->read_fd, &client->write_fd,
     &client->exe_fd);
     client_loop(client);
