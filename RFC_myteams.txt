@@ -1,0 +1,146 @@
+RFC: 999
+
+Titre: Protocole de communication client-serveur pour la messagerie instantanée.
+
+Auteurs: Paul Laban, Geoffreoy Luc et Tom Roger.
+
+Redigée : 23 Avril 2023
+
+Résumé:
+    Cette RFC décrit un protocole de communication entre un client et un serveur pour une application de messagerie instantanée. Le protocole couvre les fonctionnalités essentielles telles que l'authentification des utilisateurs, la récupération de la liste des utilisateurs, l'échange de messages et la gestion des abonnements et des notifications. Le protocole est conçu pour être simple, efficace et extensible.
+
+Introduction:
+    Avec l'augmentation de l'utilisation des applications de messagerie instantanée, il est essentiel de disposer d'un protocole standardisé pour la communication entre le client et le serveur. Ce protocole permettra d'assurer l'interopérabilité entre les différentes implémentations et de faciliter l développement d'applications de messagerie instantanée.
+
+1. COMMANDES: Le protocole définit les commandes suivantes oour la communication entre le client et le serveur
+
+1.1 Commandes d'auhtentification:
+    /login ["user_name"]: Connecte le client au serveur en utilisant le nom d'utilisateur spécifié.
+    /logout : Déconnecte le client du serveur.
+
+1.2 Commandes d'informations:
+    /help: Affiche l'aide.
+    /users: Récupère la liste de tous les utilisateurs existant sur le domaine.
+    /user ["user_uuid"]: Récupère les détails de l'utilisateur spécifié.
+    /messages ["user_uuid"]: Liste tous les messages échangés avec l'utilisateur spécifié.
+    /subscribed ?["team_uuid"]: Liste toutes les équipes auxquelles l'utilisateur est abonné ou tous les utilisateurs abonnés à une équipe.
+    /list: Liste toutes les ressources en fonction du contexte.
+    /info: Affiche les détails de la ressource en fonction du contexte.
+
+1.3 Commandes d'action:
+    /send ["user_uuid"] ["message_body"]: Envoie un message à un utilisateur spécifique.
+    /subscribe ["team_uuid"]: Abonne l'utilisateur aux événements d'une équipe et de ses sous-répertoires.
+    /unsubscribe ["team_uuid"]: Désabonne l'utilisateur d'une équipe.
+    /use ?["team_uuid"] ?["channel_uuid"] ?["thread_uuid"]: Définit le contexte de commande pour une équipe/canal/fil de discussion.
+    /create: Crée une ressource en fonction du contexte.
+
+
+2. STRUCTURE DE DONNEES: Le protocole utilise certaines structure de données pour représenter les utilisateurs, les équipes, les canaux et les discussions
+
+    2.1 Utilisateur (USER) : "uuid"
+    2.2 Equipe (TEAM) : "uuid"
+    2.3 Channel (CHANNEL) : "uuid"
+    2.4 Thread (THREAD) : "uuid"
+
+UUID: Identifiant universel unique (Universally Unique Identifier) utilisé pour identifier de manière unique un utilisateur, une équipe, un canal ou un fil de discussion.
+
+3. PROTOCOLE : Le protocole utilise des codes et des requetes spécifiques
+
+9.1 Login
+    /login ->
+        <- 102
+    <- xxx
+    /logout ->
+        <- 104 
+    <- 
+
+9.2 Informational commands
+    /help ->
+        <-
+    <-
+    /users ->
+        <- 106
+    <- xxx
+    /user ->
+        <- 108
+    <- xxx
+    /messages ->
+        <- 112
+    <- xxx
+    /subscribed ->
+        <- 106
+        <- 302
+    <- xxx
+    /list ->
+        <- 302
+        <- 304
+        <- 306
+        <- 308
+    <- xxx
+    /info ->
+        <- 402
+        <- 404
+        <- 406
+        <- 408
+    <- xxx
+
+9.3 Action commands
+    /send ->
+        <- 110
+    <- xxx
+    /subscribe ->
+        <- 114
+    <- xxx
+    /unsubscribe ->
+        <- 120
+    <- xxx
+    /use ->
+    /create ->
+        <- 202
+        <- 204
+        <- 206
+        <- 208
+        <- 302
+        <- 304
+        <- 306
+        <- 308
+    <- xxx
+
+3.4 Code
+    3.4.1 Feature Code
+        102 Login Sucess
+        104 Logout Sucess
+        106 List Users Sucess
+        108 Show user details Sucess
+        110 Send message Sucess
+        112 List message Sucess
+        114 Subscribe Sucess
+        116 Subscribe team Sucess
+        118 List Subscribed Sucess
+        120 Unsucribe Sucess
+
+    3.4.2 Create Code
+        202 Create team Sucess
+        204 Create channel Sucess
+        206 Create thread Sucess
+        208 Create reply Sucess
+
+    3.4.3 List Code
+        302 List team Sucess
+        304 List channel Sucess
+        306 List thread Sucess
+        308 List reply Sucess
+
+    3.4.4 Info Code
+        402 Logged-in user details Sucess
+        404 Selected team details Sucess
+        406 Selected channel details Sucess
+        408 Selected reply details Sucess
+
+    3.4.5 Error Code (xxx)
+        501 Unknow team Error
+        503 Unknow channel Error
+        505 Unknow thread Error
+        507 Unknow user Error
+        509 Unauthorized Error
+        511 Already exist Error

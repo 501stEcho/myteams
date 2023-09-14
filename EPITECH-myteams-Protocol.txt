@@ -1,0 +1,54 @@
+Numeric  Order List of Mandatory Reply Codes (Extract)
+    FEATURE:
+        100 - Help
+        102 - Login Sucess
+        103 - Login Fail
+        104 - Logout Sucess
+        105 - Logout Fail
+        106 - Get users list Sucess
+        107 - Get users list Fail
+        108 - Get specific user detail Sucess
+        109 - Get specific user detail Fail
+        110 - Send message Sucess
+        111 - Send message Fail
+        112 - List all Message Sucess
+        113 - List all Message Fail
+        114 - Subscribe to the events of a team Sucess
+        115 - Subscribe to the events of a team Fail
+        116 - List all subscribed Sucess
+        117 - List all subscribed Fail
+        118 - unsubscribe from a team Sucess
+        119 - unsubscribe from a team Fail
+        120 - Set command context Sucess
+        121 - Set command context Fail
+    CREATE:
+        202 - Create new team Sucess
+        203 - Create new team Fail
+        204 - Create new channel Sucess
+        205 - Create new channel Fail
+        206 - Create new thread Sucess
+        207 - Create new thread Fail
+        208 - Create new reply Sucess
+        209 - Create new reply Fail
+    LIST:
+        302 - list all existing team Sucess
+        303 - list all existing team Fail
+        304 - list all existing channel Sucess
+        305 - list all existing channel Fail
+        306 - list all existing thread Sucess
+        307 - list all existing thread Fail
+        308 - list all existing reply Sucess
+        309 - list all existing reply Fail
+    INFO:
+        402 - display currently logged-in user details Sucess
+        403 - display currently logged-in user details Fail
+        404 - display currently selected team details Sucess
+        405 - display currently selected team details Fail
+        406 - display currently selected channel details Sucess
+        407 - display currently selected channel details Fail
+        408 - display currently selected reply details Sucess
+        409 - display currently selected reply details Fail
+    ERROR:
+        504 - Server Error
+        505 - Client Error
+
