@@ -2,4 +2,3 @@ myteams_server
 myteams_cli
 *.o
 .vscode
-save/*
